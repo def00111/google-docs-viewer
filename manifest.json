@@ -1,8 +1,8 @@
 {
-  "description": "Allows you to view documents and other files with the google docs viewer.",
+  "description": "Allows you to view documents and other files online with the google docs viewer.",
   "manifest_version": 2,
   "name": "Google Docs Viewer",
-  "version": "1.4",
+  "version": "1.1",
   "default_locale": "en",
   "applications": {
     "gecko": {
