@@ -1,0 +1,47 @@
+{
+  "description": "Allows you to view documents and other files with the google docs viewer.",
+  "manifest_version": 2,
+  "name": "Google Docs Viewer",
+  "version": "1.4",
+  "default_locale": "en",
+  "applications": {
+    "gecko": {
+      "id": "{a734ba68-4aac-41e0-9141-9f8d00373d93}",
+      "strict_min_version": "54.0"
+    }
+  },
+
+  "permissions": [
+    "webRequest", "webRequestBlocking", "*://*/*", "tabs", "contextMenus", "downloads", "storage"
+  ],
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "content_scripts": [{
+    "matches": [
+      "https://docs.google.com/viewer?url=*&fext=*",
+      "https://docs.google.com/viewerng/viewer?url=*&fext=*"
+    ],
+    "js": ["viewer.js"],
+    "run_at": "document_start"
+  }, {
+    "matches": ["*://*/*"],
+    "exclude_matches": [
+      "https://docs.google.com/*",
+      "https://content.googleapis.com/*",
+      "https://clients6.google.com/*",
+      "https://accounts.google.com/*",
+      "https://*.googleusercontent.com/*"
+    ],
+    "js": ["content.js"],
+    "run_at": "document_start",
+    "all_frames": true
+  }],
+
+  "options_ui": {
+    "page": "options.html",
+    "browser_style": false
+  }
+}
